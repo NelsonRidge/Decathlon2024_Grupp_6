@@ -41,7 +41,7 @@ public class MainGUI {
         panel.add(new JLabel("Enter Competitor's Name:"));
         panel.add(nameField);
 
-        // Dropdown for selecting discipline
+        // Dropdown for selecting disciplines
         String[] disciplines = {
                 "100m", "400m", "1500m", "110m Hurdles",
                 "Long Jump", "High Jump", "Pole Vault",

@@ -121,7 +121,7 @@ public class SelectDiscipline {
         }
     }
 
-	// Needs more stuff.
+	// Needs more stuff
 	public void printDisciplines() {
 		System.out.println("1. Decathlon 100 meters. (Measured in seconds)");
 		System.out.println("2. Decathlon 400 meters. (Measured in seconds)");
