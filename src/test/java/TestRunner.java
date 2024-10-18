@@ -6,17 +6,15 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class TestRunner {
-/*
+
     @Test
-    public void testDeca100validTime() {
+    public void testDeca100validTime() throws InvalidResultException {
         Deca100M deca100M = new Deca100M();
         int expected = 926;
         double testData = 10.71;
         int actual = deca100M.calculateResult(testData);
         assertEquals(expected, actual);
     }
-
- */
 
     @Test
     public void testDeca110MHurdlesValidTime() {
@@ -28,7 +26,7 @@ public class TestRunner {
     }
 
     @Test
-    public void testDeca400MValidRunningTime() {
+    public void testDeca400MValidRunningTime() throws InvalidResultException {
         Deca400M deca400M = new Deca400M();
         int expected = 924;
         double testData = 47.69;
@@ -37,7 +35,7 @@ public class TestRunner {
     }
 
      @Test
-      public void  testDeca1500MValidRunningTime() {
+      public void  testDeca1500MValidRunningTime() throws InvalidResultException {
           Deca1500M deca1500M = new Deca1500M();
           int expected = 687;
           double testData = 279;
@@ -45,14 +43,14 @@ public class TestRunner {
           assertEquals(expected, actual);
       }
     @Test
-    public void testDecaDiscusThrowValidLength() {
+    public void testDecaDiscusThrowValidLength() throws InvalidResultException {
         DecaDiscusThrow decaDiscusThrow = new DecaDiscusThrow();
         int expected = 866;
         double testData = 49.80;
         int actual = decaDiscusThrow.calculateResult(testData);
         assertEquals(expected, actual);
     }
-    @Test public void  testDecaHighJumpValidHight() {
+    @Test public void  testDecaHighJumpValidHight() throws InvalidResultException {
         DecaHighJump decahighjump = new DecaHighJump() ;
         int expected = 794;
         double testData = 199;
@@ -60,7 +58,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
 
-    @Test public void  testDecaJavelinThrowValidLength() {
+    @Test public void  testDecaJavelinThrowValidLength() throws InvalidResultException {
         DecaJavelinThrow decaJavelinThrow = new DecaJavelinThrow() ;
         int expected = 842;
         double testData = 66.87;
