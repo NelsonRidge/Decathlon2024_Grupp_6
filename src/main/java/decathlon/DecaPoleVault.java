@@ -4,43 +4,20 @@ import common.*;
 
 public class DecaPoleVault {
 
-	private int score;
-	private double A = 0.2797;
-	private double B = 100;
-	private double C = 1.35;
-	boolean active = true;
+    private double A = 0.2797;
+    private double B = 100;
+    private double C = 1.35;
+    CalcTrackAndField calc = new CalcTrackAndField();
 
-	CalcTrackAndField calc = new CalcTrackAndField();
-	InputResult inputResult = new InputResult();
+    // Calculate the score based on distance and height. Measured in centimetres.
+    public int calculateResult(double distance) throws InvalidResultException {
 
-	// Calculate the score based on distance and height. Measured in centimetres.
-	public int calculateResult(double distance) {
+        if (distance < 0) {
+            throw new InvalidResultException("Value too low");
+        } else if (distance > 1000) {
+            throw new InvalidResultException("Value too high");
+        }
 
-		while (active) {
-
-			try {
-				// Acceptable values.
-				if (distance < 0) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-
-				} else if (distance > 1000) {
-
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
-
-				} else {
-
-					score = calc.calculateField(A, B, C, distance);
-					active = false;
-				}
-			} catch (Exception e) {
-
-				System.out.println("Please enter numbers");
-			}
-		}
-		System.out.println("The result is: " + score);
-		return score;
-	}
-
+        return calc.calculateField(A, B, C, distance);
+    }
 }
