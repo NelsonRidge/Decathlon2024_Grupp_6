@@ -14,30 +14,23 @@ public class DecaHighJump {
 	InputResult inputResult = new InputResult();
 
 	// Calculate the score based on distance and height. Measured in centimeters.
-	public int calculateResult(double distance) {
+	public int calculateResult(double distance) throws InvalidResultException {
 
-		while (active) {
 
-			try {
-				// Acceptable values.
-				if (distance < 0) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-				} else if (distance > 300) {
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
-				} else {
-
-					score = calc.calculateField(A, B, C, distance);
-					active = false;
-				}
-			} catch (Exception e) {
-
-				System.out.println("Please enter numbers");
-			}
+		if (distance < 0) {
+			System.out.println("Value too low");
+			throw new InvalidResultException("Value too low");
+		} else if (distance > 300) {
+			System.out.println("Value too high");
+			throw new InvalidResultException("Value too high");
 		}
-		System.out.println("The result is: " + score);
-		return score;
-	}
 
+
+		int score = calc.calculateField(A, B, C, distance);
+
+		System.out.println("The result is " + score);
+
+		return score;
+
+	}
 }
