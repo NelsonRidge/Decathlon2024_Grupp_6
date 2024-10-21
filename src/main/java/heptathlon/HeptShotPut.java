@@ -2,44 +2,30 @@ package heptathlon;
 
 import common.CalcTrackAndField;
 import common.InputResult;
+import decathlon.InvalidResultException;
 
 public class HeptShotPut {
 
-	private int score;
-	private double A = 56.0211;
-	private double B = 1.5;
-	private double C = 1.05;
-	boolean active = true;
-	CalcTrackAndField calc = new CalcTrackAndField();
-	InputResult inputResult = new InputResult();
+    private int score;
+    private double A = 56.0211;
+    private double B = 1.5;
+    private double C = 1.05;
+    boolean active = true;
+    CalcTrackAndField calc = new CalcTrackAndField();
 
-	// Calculate the score based on distance and height. Measured in meters.
-	public int calculateResult(double distance) {
 
-		while (active) {
+    // Calculate the score based on distance and height. Measured in meters.
+    public int calculateResult(double distance) throws InvalidResultException {
 
-			try {
-				// Acceptable values.
-				if (distance < 0) {
-					System.out.println("Value too low");
-					distance = inputResult.enterResult();
-				} else if (distance > 30) {
 
-					System.out.println("Value too high");
-					distance = inputResult.enterResult();
+        // Acceptable values.
+        if (distance < 0) {
+            throw new InvalidResultException("Value too low");
+        } else if (distance > 30) {
 
-				} else {
-
-					score = calc.calculateField(A, B, C, distance);
-					active = false;
-				}
-			} catch (Exception e) {
-
-				System.out.println("Please enter numbers");
-			}
-		}
-		System.out.println("The result is: " + score);
-		return score;
-	}
+            throw new InvalidResultException("Value too high");
+        }
+        return calc.calculateField(A, B, C, distance);
+    }
 
 }

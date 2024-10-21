@@ -116,7 +116,7 @@ public class TestRunner {
     }
 
     @Test
-    public void testHep800MValidTime() {
+    public void testHep800MValidTime() throws InvalidResultException {
         Hep800M hep800M = new Hep800M();
         int expected = 956;
         double testData = 130.62;
@@ -125,8 +125,8 @@ public class TestRunner {
     }
 
     @Test
-    public void testHeptHightJumpValidHight() {
-        HeptHightJump heptHightJump = new HeptHightJump();
+    public void  testHeptHightJumpValidHight() throws InvalidResultException {
+        HeptHightJump heptHightJump = new HeptHightJump() ;
         int expected = 1132;
         double testData = 192;
         int actual = heptHightJump.calculateResult(testData);
@@ -134,8 +134,9 @@ public class TestRunner {
     }
 
     @Test
-    public void testHeptJavelinThrowValidLenght() {
-        HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow();
+
+    public void  testHeptJavelinThrowValidLenght() throws InvalidResultException {
+        HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow() ;
         int expected = 939;
         double testData = 54.04;
         int actual = heptJavelinThrow.calculateResult(testData);
@@ -143,8 +144,8 @@ public class TestRunner {
     }
 
     @Test
-    public void testHeptLongJumpValidLenght() {
-        HeptLongJump heptLongJump = new HeptLongJump();
+    public void  testHeptLongJumpValidLenght() throws InvalidResultException  {
+        HeptLongJump heptLongJump = new HeptLongJump() ;
         int expected = 978;
         double testData = 641;
         int actual = heptLongJump.calculateResult(testData);
@@ -152,8 +153,8 @@ public class TestRunner {
     }
 
     @Test
-    public void testHeptShotPutValidLenght() {
-        HeptShotPut heptShotPut = new HeptShotPut();
+    public void  testHeptShotPutValidLenght() throws InvalidResultException  {
+        HeptShotPut heptShotPut = new HeptShotPut() ;
         int expected = 897;
         double testData = 15.54;
         int actual = heptShotPut.calculateResult(testData);
