@@ -8,7 +8,7 @@ import static org.testng.AssertJUnit.assertEquals;
 public class TestRunner {
 /*
     @Test
-    public void testDeca100validTime() {
+    public void testDeca100validTime() throws InvalidResultException {
         Deca100M deca100M = new Deca100M();
         int expected = 926;
         double testData = 10.71;
@@ -36,14 +36,14 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
 
-     @Test
-      public void  testDeca1500MValidRunningTime() {
-          Deca1500M deca1500M = new Deca1500M();
-          int expected = 687;
-          double testData = 279;
-          int actual = deca1500M.calculateResult(testData);
-          assertEquals(expected, actual);
-      }
+    @Test
+    public void  testDeca1500MValidRunningTime() {
+        Deca1500M deca1500M = new Deca1500M();
+        int expected = 687;
+        double testData = 279;
+        int actual = deca1500M.calculateResult(testData);
+        assertEquals(expected, actual);
+    }
     @Test
     public void testDecaDiscusThrowValidLength() {
         DecaDiscusThrow decaDiscusThrow = new DecaDiscusThrow();
@@ -67,7 +67,7 @@ public class TestRunner {
         int actual = decaJavelinThrow.calculateResult(testData);
         assertEquals(expected, actual);    }
 
-    @Test public void  testDecaLongJumpValidLength() {
+    @Test public void  testDecaLongJumpValidLength()  {
         DecaLongJump decaLongJump = new DecaLongJump() ;
         int expected = 1010;
         double testData = 780;
@@ -105,7 +105,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
     @Test
-    public void testHep800MValidTime() {
+    public void testHep800MValidTime() throws InvalidResultException {
         Hep800M hep800M = new Hep800M();
         int expected = 956;
         double testData = 130.62;
@@ -113,7 +113,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
     @Test
-    public void  testHeptHightJumpValidHight() {
+    public void  testHeptHightJumpValidHight() throws InvalidResultException {
         HeptHightJump heptHightJump = new HeptHightJump() ;
         int expected = 1132;
         double testData = 192;
@@ -121,7 +121,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
     @Test
-    public void  testHeptJavelinThrowValidLenght() {
+    public void  testHeptJavelinThrowValidLenght() throws InvalidResultException {
         HeptJavelinThrow heptJavelinThrow = new HeptJavelinThrow() ;
         int expected = 939;
         double testData = 54.04;
@@ -129,7 +129,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
     @Test
-    public void  testHeptLongJumpValidLenght() {
+    public void  testHeptLongJumpValidLenght() throws InvalidResultException  {
         HeptLongJump heptLongJump = new HeptLongJump() ;
         int expected = 978;
         double testData = 641;
@@ -137,7 +137,7 @@ public class TestRunner {
         assertEquals(expected, actual);
     }
     @Test
-    public void  testHeptShotPutValidLenght() {
+    public void  testHeptShotPutValidLenght() throws InvalidResultException  {
         HeptShotPut heptShotPut = new HeptShotPut() ;
         int expected = 897;
         double testData = 15.54;
