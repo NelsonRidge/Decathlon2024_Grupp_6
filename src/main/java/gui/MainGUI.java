@@ -2,6 +2,7 @@ package gui;
 
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +24,8 @@ public class MainGUI {
     private JComboBox<String> disciplineBox;
     private JTextArea outputArea;
 
+    private JTable competitorTable;
+    private DefaultTableModel tableModel;
     private ArrayList<Competitor> competitors = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -32,8 +35,9 @@ public class MainGUI {
     private void createAndShowGUI() {
         JFrame frame = new JFrame("Track and Field Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 400);
-
+        frame.setSize(1000, 800);
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BorderLayout());
         JPanel panel = new JPanel(new GridLayout(6, 1));
 
         // Input for competitor's name
@@ -68,13 +72,33 @@ public class MainGUI {
         exportButton.addActionListener(new ExportButtonListener());  // New export button listener
         panel.add(exportButton);  // Add export button to the panel
 
+        // Tooltips for input fields and buttons
+        nameField.setToolTipText("Enter a valid name for the competitor");
+        resultField.setToolTipText("Enter a valid result in numbers for the selected discipline");
+
+
         // Output area
         outputArea = new JTextArea(5, 40);
         outputArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(outputArea);
         panel.add(scrollPane);
 
-        frame.add(panel);
+        // Table for displaying competitors and their results
+        String[] columnNames = {"Name", "100m", "400m", "1500m", "110m Hurdles",
+                "Long Jump", "High Jump", "Pole Vault",
+                "Discus Throw", "Javelin Throw", "Shot Put",
+                "Hep 100M Hurdles", "Hep 200M", "Hep 800M", "Hep High Jump",
+                "Hep Javelin Throw", "Hep Long Jump", "Hep Shot Put", "Total Score"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+        competitorTable = new JTable(tableModel);
+        JScrollPane tableScrollPane = new JScrollPane(competitorTable);
+        tableScrollPane.setPreferredSize(new Dimension(750, 200));
+
+
+
+        frame.setLayout(new BorderLayout());
+        frame.add(panel, BorderLayout.CENTER);  // Top panel with inputs
+        frame.add(tableScrollPane, BorderLayout.SOUTH);
         frame.setVisible(true);
     }
 
@@ -87,6 +111,20 @@ public class MainGUI {
 
             try {
                 double result = Double.parseDouble(resultText);
+
+                if (name.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor", "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                    return; // Exit the method if name is empty or doesn't start with an uppercase letter
+                }
+
+                // Check if all characters are letters
+                for (int i = 0; i < name.length(); i++) {
+                    if (!Character.isLetter(name.charAt(i))) {
+                        JOptionPane.showMessageDialog(null, "Name must only contain letters", "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                        return; // Exit the method if name contains non-letter characters
+                    }
+                }
+
 
                 int score = 0;
                 switch (discipline) {
@@ -160,12 +198,13 @@ public class MainGUI {
                         break;
                 }
 
-                Competitor competitor = new Competitor(name);  // Create a new competitor
-                competitors.add(competitor);        // Add to the list
-
-
-                // Update the competitor's score for the selected discipline
-                competitor.setScore(discipline, score);
+                Competitor competitor = new Competitor(name);
+                if (competitors.size() > 40) {
+                    JOptionPane.showMessageDialog(null, "Maximum number of competitors reached (40).", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    competitors.add(competitor);
+                    competitor.setScore(discipline, score);
+                }
 
                 outputArea.append("Competitor: " + name + "\n");
                 outputArea.append("Discipline: " + discipline + "\n");
@@ -211,5 +250,7 @@ public class MainGUI {
         printer.add(data, "Results");
         printer.write();
     }
+
+
 
 }
