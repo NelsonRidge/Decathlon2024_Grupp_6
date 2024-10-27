@@ -117,14 +117,11 @@ public class MainGUI {
                     return; // Exit the method if name is empty or doesn't start with an uppercase letter
                 }
 
-                // Check if all characters are letters
-                for (int i = 0; i < name.length(); i++) {
-                    if (!Character.isLetter(name.charAt(i))) {
+                // Check if name follows typical naming conventions
+                if (!name.matches("^[a-zA-Z]+([ '-][a-zA-Z]+)*$")) {
                         JOptionPane.showMessageDialog(null, "Name must only contain letters", "Invalid Name", JOptionPane.ERROR_MESSAGE);
                         return; // Exit the method if name contains non-letter characters
                     }
-                }
-
 
                 int score = 0;
                 switch (discipline) {
