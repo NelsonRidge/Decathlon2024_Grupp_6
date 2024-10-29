@@ -113,7 +113,7 @@ public class MainGUI {
                 double result = Double.parseDouble(resultText);
 
                 if (name.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor", "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Please enter a valid name for the competitor, only using letters", "Invalid Name", JOptionPane.ERROR_MESSAGE);
                     return; // Exit the method if name is empty or doesn't start with an uppercase letter
                 }
 
@@ -196,7 +196,7 @@ public class MainGUI {
                 }
 
                 Competitor competitor = new Competitor(name);
-                if (competitors.size() > 40) {
+                if (competitors.size() >= 40) {
                     JOptionPane.showMessageDialog(null, "Maximum number of competitors reached (40).", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     competitors.add(competitor);
