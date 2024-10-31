@@ -118,7 +118,7 @@ public class MainGUI {
                 }
 
                 // Check if name follows typical naming conventions
-                if (!name.matches("^[a-zA-Z]+([ '-][a-zA-Z]+)*$")) {
+                if (!name.matches("^[a-öA-Ö]+([ '-][a-öA-ö]+)*$")) {
                         JOptionPane.showMessageDialog(null, "Name must only contain letters", "Invalid Name", JOptionPane.ERROR_MESSAGE);
                         return; // Exit the method if name contains non-letter characters
                     }
